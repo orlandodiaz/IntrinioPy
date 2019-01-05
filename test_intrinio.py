@@ -12,10 +12,11 @@ class TestIntrinio(unittest.TestCase):
 
     def test_get_stocks_for_given_url(self):
         stocks = self.intrinio.get_stocks()
+        self.assertTrue(stocks)
 
     def test_save(self):
         stocks = self.intrinio.get_stocks()
         pickle_name = "stocks_250_to_1b.p"
         self.intrinio.save(stocks, pickle_name)
 
-        assert os.path.isfile(pickle_name)
+        self.assertTrue(os.path.isfile(pickle_name))
