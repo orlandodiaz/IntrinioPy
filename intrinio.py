@@ -4,7 +4,7 @@ import requests
 import os
 
 class Intrinio(object):
-    def __init__(self, username, password):
+    def __init__(self):
         self.username = os.environ.get('INTRINIO_USERNAME')
         self.password = os.environ.get('INTRINIO_PASSWORD')
         self.url =  'https://api.intrinio.com/securities/search?conditions=marketcap~lt~200000000&page_size=500'
@@ -80,7 +80,7 @@ class Intrinio(object):
 
 if __name__ == '__main__':
 
-    intrinio = Intrinio(username, password)
+    intrinio = Intrinio()
 
     symbols = intrinio.get_stocks()
     intrinio.save(symbols, "less_than_200m.pickle")
