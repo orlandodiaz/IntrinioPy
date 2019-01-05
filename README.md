@@ -8,11 +8,17 @@ Intrinio's screener API settings can be found at http://blog.intrinio.com/stock-
 
 ### Usage
 
-Fill in credentials:
+Create environmental variables:
 
-    email = 'your.email@gmail.com'
-    password = 'your.pass' 
-    intrinio = Intrinio(username, password)
+    export INTRINIO_USERNAME="Intrinio username"
+    export INTRINIO_PASSWORD="Intrinio password"
+
+
+Import
+
+    from IntrinioPy import Intrinio
+    intrinio = Intrinio()
+
 
 Example
     # Market-cap greater than 2 billion
@@ -20,7 +26,7 @@ Example
     
 Start request
 
-    symbols = intrinio.get_stocks()
+    symbols = intrinio.get_stock_ticker_list()
     
 Save for later
 
