@@ -1,6 +1,6 @@
-from log import log
-import requests
+from log3 import log
 import cPickle as pickle
+import requests
 from cred import username, password
 
 
