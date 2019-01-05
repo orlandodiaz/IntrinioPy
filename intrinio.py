@@ -1,13 +1,12 @@
 from log3 import log
 import cPickle as pickle
 import requests
-from cred import username, password
-
+import os
 
 class Intrinio(object):
     def __init__(self, username, password):
-        self.username = username
-        self.password = password
+        self.username = os.environ.get('INTRINIO_USERNAME')
+        self.password = os.environ.get('INTRINIO_PASSWORD')
         self.url =  'https://api.intrinio.com/securities/search?conditions=marketcap~lt~200000000&page_size=500'
 
     def save(self, stocks, pickle_name):
