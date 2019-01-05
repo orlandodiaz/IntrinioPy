@@ -10,13 +10,26 @@ class Intrinio(object):
         self.url =  'https://api.intrinio.com/securities/search?conditions=marketcap~lt~200000000&page_size=500'
 
     def save(self, stocks, pickle_name):
-        """ pickles the result for later use"""
+        """ Pickles a given stock list or later use
 
-        # pickle stocks object for later reuse
+        Args:
+            stocks (list): Stock list to pickle
+            pickle_name (str): : Name of pickled stock list
+
+        Returns:
+
+        """
+
         log.info("Pickling object stocks as {pickle_name}".format(pickle_name=pickle_name))
         pickle.dump(stocks, open(pickle_name, "wb"))
 
-    def get_stocks(self):
+    def get_stock_ticker_list(self):
+        """ Gets a list of stocks given API criteria
+
+        Returns:
+             stocks (list): List of stock tickers matching given criteria as specified in the url instance variable
+
+        """
 
         retries = 4
         stocks = []
@@ -82,5 +95,5 @@ if __name__ == '__main__':
 
     intrinio = Intrinio()
 
-    symbols = intrinio.get_stocks()
+    symbols = intrinio.get_stock_ticker_list()
     intrinio.save(symbols, "less_than_200m.pickle")
